@@ -450,11 +450,11 @@ fun WorshipScreen(
 
         // TAB 1: LIVE QIBLA COMPASS, 20 CITIES + GPS, HANAFI ASR & HIJRI CALENDAR
         if (subTab == 1) {
-            val qiblaBearing = remember(city) { PrayerQiblaMath.qiblaBearing(city.lat, city.lon) }
-            val distanceKm = remember(city) { PrayerQiblaMath.distanceToKaabaKm(city.lat, city.lon) }
+            val qiblaBearing = PrayerQiblaMath.qiblaBearing(city.lat, city.lon)
+            val distanceKm = PrayerQiblaMath.distanceToKaabaKm(city.lat, city.lon)
             val relativeAngle = ((qiblaBearing - compassHeading) + 360.0) % 360.0
             val alignedWithKaaba = abs(((relativeAngle + 180.0) % 360.0) - 180.0) <= 5.0
-
+ 
             item {
                 Card(shape = CardShape, border = cardBorder(darkMode), colors = surfaceCardColors(darkMode)) {
                     Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
